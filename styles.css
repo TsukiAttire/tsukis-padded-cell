@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --bg-main: #f2f2f2;
+  --bg-card: #ffffff;
+  --bg-plaid-1: #e6e6e6;
+  --bg-plaid-2: #dedede;
+  --text-main: #111;
+  --text-muted: #666;
+  --border-soft: #d0d0d0;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      var(--bg-plaid-1),
+      var(--bg-plaid-1) 20px,
+      var(--bg-plaid-2) 20px,
+      var(--bg-plaid-2) 40px
+    );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-main);
+}
+
+.card {
+  width: 380px;
+  background: var(--bg-card);
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Banner */
+.banner {
+  height: 140px;
+  background-image: url("https://placehold.co/800x300");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Profile */
+.profile {
+  text-align: center;
+  padding: 0 24px 24px;
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 4px solid white;
+  margin-top: -55px;
+  background: white;
+  object-fit: cover;
+}
+
+h1 {
+  margin: 12px 0 4px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.bio {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Links */
+.links {
+  margin-top: 20px;
+}
+
+.links a {
+  display: block;
+  text-decoration: none;
+  color: var(--text-main);
+  background: #fafafa;
+  border: 1px solid var(--border-soft);
+  padding: 14px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.links a:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 11px;
+  color: #999;
+  margin-top: 16px;
+}
