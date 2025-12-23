@@ -3,8 +3,8 @@
 :root {
   --bg-main: #f2f2f2;
   --bg-card: #ffffff;
-  --bg-plaid-1: #e6e6e6;
-  --bg-plaid-2: #dedede;
+  --bg-plaid-1: #e7e7e7;
+  --bg-plaid-2: #dddddd;
   --text-main: #111;
   --text-muted: #666;
   --border-soft: #d0d0d0;
@@ -22,31 +22,68 @@ body {
     repeating-linear-gradient(
       45deg,
       var(--bg-plaid-1),
-      var(--bg-plaid-1) 20px,
-      var(--bg-plaid-2) 20px,
-      var(--bg-plaid-2) 40px
-    );
+      var(--bg-plaid-1) 24px,
+      var(--bg-plaid-2) 24px,
+      var(--bg-plaid-2) 48px
+    ),
+    radial-gradient(circle at top, #ffffff, #f0f0f0);
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--text-main);
+  position: relative;
 }
 
+/* Grain overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.03),
+      rgba(0,0,0,0.03) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  mix-blend-mode: multiply;
+  opacity: 0.4;
+}
+
+/* Card */
 .card {
   width: 380px;
   background: var(--bg-card);
-  border-radius: 22px;
+  border-radius: 24px;
   overflow: hidden;
   border: 1px solid var(--border-soft);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.6);
 }
 
 /* Banner */
 .banner {
   height: 140px;
-  background-image: url("https://placehold.co/800x300");
+  background-image: url("assets/Banner.png");
   background-size: cover;
   background-position: center;
+  position: relative;
+  filter: contrast(0.95) saturate(0.9);
+}
+
+.banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0.35)
+  );
 }
 
 /* Profile */
@@ -63,17 +100,29 @@ body {
   margin-top: -55px;
   background: white;
   object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.avatar:active {
+  transform: translateY(0) scale(0.97);
 }
 
 h1 {
   margin: 12px 0 4px;
   font-weight: 600;
   font-size: 22px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.4);
 }
 
 .bio {
   font-size: 14px;
   color: var(--text-muted);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.4);
 }
 
 /* Links */
@@ -91,12 +140,21 @@ h1 {
   border-radius: 14px;
   margin-bottom: 12px;
   font-size: 15px;
-  transition: all 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .links a:hover {
-  background: #f0f0f0;
-  transform: translateY(-1px);
+  background: #f1f1f1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+.links a:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.12);
 }
 
 /* Footer */
